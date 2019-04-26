@@ -4,6 +4,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerLoginRegisterActivity">
-
-</android.support.constraint.ConstraintLayout>
+    android:background="@drawable/unires"
+    tools:context=".CustomerLoginRegisterActivity"/>
