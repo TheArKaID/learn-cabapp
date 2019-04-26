@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CABApps</string>
+    <string name="powerby">Powered By</string>
+    <string name="timitUR">Tim IT Unires</string>
+
+    <string name="imdriver">I\'m a Driver</string>
+    <string name="imcustomer">I\'m a Customer</string>
+</resources>
