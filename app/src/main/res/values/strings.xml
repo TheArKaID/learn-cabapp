@@ -7,4 +7,5 @@
     <string name="imcustomer">I\'m a Customer</string>
     
     <string name="customerLoginText">Customer Login</string>
+    <string name="driverLoginText">Driver Login</string>
 </resources>
