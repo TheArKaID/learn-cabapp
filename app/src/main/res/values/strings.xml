@@ -5,4 +5,6 @@
 
     <string name="imdriver">I\'m a Driver</string>
     <string name="imcustomer">I\'m a Customer</string>
+    
+    <string name="customerLoginText">Customer Login</string>
 </resources>
