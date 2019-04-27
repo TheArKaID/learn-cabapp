@@ -124,6 +124,9 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
             Toast.makeText(CustomerLoginRegisterActivity.this, "Please Write an Password....", Toast.LENGTH_SHORT).show();
         }
         else{
+            loadingBar.setTitle("Customer Sig in");
+            loadingBar.setMessage("Please wait, We are signing in you.....");
+            loadingBar.show();
             mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -133,6 +136,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                     else{
                         Toast.makeText(CustomerLoginRegisterActivity.this, "Registration Failed....", Toast.LENGTH_SHORT).show();
                     }
+                    loadingBar.dismiss();
                 }
             });
         }
