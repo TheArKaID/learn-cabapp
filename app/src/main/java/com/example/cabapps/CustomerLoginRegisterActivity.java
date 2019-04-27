@@ -1,5 +1,6 @@
 package com.example.cabapps;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
     EditText PasswordET;
 
     FirebaseAuth mAuth;
+    ProgressDialog loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
         Title = findViewById(R.id.textView4);
         RegisterBtn = findViewById(R.id.CustomerRegisterBtn);
         LoginBtn = findViewById(R.id.CustomerLoginBtn);
+        loadingBar = new ProgressDialog(this);
 
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +98,9 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Write an Password.....", Toast.LENGTH_SHORT).show();
         }
         else{
+            loadingBar.setTitle("Customer Sig in");
+            loadingBar.setMessage("Please wait, We are signing in you.....");
+            loadingBar.show();
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -104,6 +110,7 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                     else {
                         Toast.makeText(CustomerLoginRegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }
+                    loadingBar.dismiss();
                 }
             });
         }
