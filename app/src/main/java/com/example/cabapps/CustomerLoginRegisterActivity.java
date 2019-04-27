@@ -75,6 +75,38 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                 RegisterCustomer(email, pass);
             }
         });
+
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = EmailET.getText().toString();
+                String pass = PasswordET.getText().toString();
+
+                LoginCustomer(email, pass);
+            }
+        });
+    }
+
+    private void LoginCustomer(String email, String pass) {
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Please Write an Email.....", Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(pass)){
+            Toast.makeText(this, "Please Write an Password.....", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(CustomerLoginRegisterActivity.this, "Login Successfully....", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(CustomerLoginRegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     private void RegisterCustomer(String email, String pass) {
