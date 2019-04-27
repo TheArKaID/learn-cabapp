@@ -77,6 +77,42 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                 RegisterDriver(email, pass);
             }
         });
+
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = EmailET.getText().toString();
+                String pass = PasswordET.getText().toString();
+
+                LoginDriver(email, pass);
+            }
+        });
+    }
+
+    private void LoginDriver(String email, String pass) {
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this, "Please Write an Email.....", Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(pass)){
+            Toast.makeText(this, "Please Write an Password.....", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            loadingBar.setTitle("Driver Sig in");
+            loadingBar.setMessage("Please wait, We are signing in you.....");
+            loadingBar.show();
+            mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(DriverLoginRegisterActivity.this, "Login Successfully....", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(DriverLoginRegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
+                    loadingBar.dismiss();
+                }
+            });
+        }
     }
 
     private void RegisterDriver(String email, String pass) {
