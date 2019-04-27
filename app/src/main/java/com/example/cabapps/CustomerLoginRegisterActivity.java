@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CustomerLoginRegisterActivity extends AppCompatActivity {
@@ -14,11 +15,16 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
     TextView Login;
     Button RegisterBtn;
     Button LoginBtn;
+
+    EditText EmailET;
+    EditText PasswordET;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login_register);
 
+        EmailET = findViewById(R.id.CustomerEmail);
+        PasswordET = findViewById(R.id.CustomerPassword);
         Register = findViewById(R.id.doRegister);
         Login = findViewById(R.id.doLogin);
         Title = findViewById(R.id.textView4);
@@ -46,5 +52,19 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
                 Login.setVisibility(View.GONE);
             }
         });
+
+        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = EmailET.getText().toString();
+                String pass = PasswordET.getText().toString();
+
+                RegisterCustomer(email, pass);
+            }
+        });
+    }
+
+    private void RegisterCustomer(String email, String pass) {
+
     }
 }
