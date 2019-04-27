@@ -79,20 +79,20 @@ public class CustomerLoginRegisterActivity extends AppCompatActivity {
 
     private void RegisterCustomer(String email, String pass) {
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(CustomerLoginRegisterActivity.this, "Please Write an Email....", Toast.LENGTH_SHORT);
+            Toast.makeText(CustomerLoginRegisterActivity.this, "Please Write an Email....", Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(pass)){
-            Toast.makeText(CustomerLoginRegisterActivity.this, "Please Write an Password....", Toast.LENGTH_SHORT);
+            Toast.makeText(CustomerLoginRegisterActivity.this, "Please Write an Password....", Toast.LENGTH_SHORT).show();
         }
         else{
             mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(CustomerLoginRegisterActivity.this, "Registration Successfully....", Toast.LENGTH_SHORT);
+                        Toast.makeText(CustomerLoginRegisterActivity.this, "Registration Successfully....", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(CustomerLoginRegisterActivity.this, "Registration Failed....", Toast.LENGTH_SHORT);
+                        Toast.makeText(CustomerLoginRegisterActivity.this, "Registration Failed....", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
