@@ -129,13 +129,13 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(DriverLoginRegisterActivity.this, "Register Successfully....", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(DriverLoginRegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
-                    }
-                    loadingBar.dismiss();
+                if(task.isSuccessful()){
+                    Toast.makeText(DriverLoginRegisterActivity.this, "Register Successfully....", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(DriverLoginRegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
+                }
+                loadingBar.dismiss();
                 }
             });
         }
