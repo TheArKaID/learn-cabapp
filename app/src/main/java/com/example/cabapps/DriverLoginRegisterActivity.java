@@ -1,6 +1,7 @@
 package com.example.cabapps;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -105,6 +106,9 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(DriverLoginRegisterActivity.this, "Login Successfully....", Toast.LENGTH_SHORT).show();
+
+                        Intent driverIntent = new Intent(DriverLoginRegisterActivity.this, DriversMapActivity.class);
+                        startActivity(driverIntent);
                     }
                     else {
                         Toast.makeText(DriverLoginRegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -131,6 +135,9 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(DriverLoginRegisterActivity.this, "Register Successfully....", Toast.LENGTH_SHORT).show();
+
+                    Intent driverIntent = new Intent(DriverLoginRegisterActivity.this, DriversMapActivity.class);
+                    startActivity(driverIntent);
                 }
                 else {
                     Toast.makeText(DriverLoginRegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
