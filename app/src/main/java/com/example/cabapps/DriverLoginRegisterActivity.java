@@ -135,15 +135,13 @@ public class DriverLoginRegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(DriverLoginRegisterActivity.this, "Register Successfully....", Toast.LENGTH_SHORT).show();
-
-                    loadingBar.dismiss();
                     Intent driverIntent = new Intent(DriverLoginRegisterActivity.this, DriversMapActivity.class);
                     startActivity(driverIntent);
                 }
                 else {
                     Toast.makeText(DriverLoginRegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
                 }
+                loadingBar.dismiss();
                 }
             });
         }
